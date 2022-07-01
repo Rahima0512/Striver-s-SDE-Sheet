@@ -1,0 +1,33 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main()
+{
+    int n=5;
+    vector<vector<int>> v(n);
+    
+    for(int i=0;i<n;i++)
+    {
+        v[i].resize(i+1);
+        v[i][0]=v[i][i]=1;
+        for(int j=1;j<i+1;j++)
+        {
+            v[i][j]=v[i-1][j-1]+v[i-1][j];
+        }
+    }
+    
+    // .................For printing the series..................
+    
+    for(int i=0; i<n; i++) {
+        for(int k=n-i;k>0;k--)
+            {
+                cout<<" ";
+            }
+        for(int j=0; j<i+1; j++) {
+            cout<<v[i][j]<<" ";
+
+        }
+        cout<<"\n";
+    }
+}
